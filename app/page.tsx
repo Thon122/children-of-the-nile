@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar';
 import ImpactCard from '@/components/ImpactCard';
 import AboutFounder from '@/components/AboutFounder';
 import PledgeForm from '@/components/PledgeForm'; // 1. Import
+import GoalTracker from '@/components/GoalTracker';
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         </div>
 
         {/* 2. Add the form here */}
+        <GoalTracker current={5} target={500} />
         <div className="w-full mt-20">
           <PledgeForm />
         </div>
