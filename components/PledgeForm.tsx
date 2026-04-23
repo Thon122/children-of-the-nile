@@ -8,25 +8,25 @@ export default function PledgeForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
     // Replace the strings below with your actual IDs from EmailJS
     emailjs.sendForm(
       'service_3jc8u51', 
-      'template_2fu1l48', 
-      form.current!, 
+      'template_6tj8kmm', 
+      e.currentTarget, 
       'Qb96O25mmuXfTB3cp'
     )
     .then(() => {
       setSubmitted(true);
       setLoading(false);
     })
-    .catch((error) => {
-      console.error('FAILED...', error);
-      alert("Something went wrong. Please try again.");
-      setLoading(false);
+    .catch((err) => {
+    console.error("EmailJS Error:", err);
+    alert("Check the console for the error!");
+    setLoading(false);
     });
   };
 
