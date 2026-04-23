@@ -40,7 +40,7 @@ export default function PledgeForm() {
   }
 
   return (
-    <section id="donate" className="max-w-xl mx-auto py-12 px-6 bg-zinc-900 rounded-3xl border border-white/5 p-8 shadow-2xl">
+    <section id="donate" className="max-w-xl mx-auto py-12 px-6 bg-zinc-900 rounded-3xl border border-white/5 p-8 shadow-2xl" >
       <form ref={form} onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Full Name</label>

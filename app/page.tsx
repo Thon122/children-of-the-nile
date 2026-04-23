@@ -21,7 +21,7 @@ export default function Home() {
         </div>
 
         {/* 2. Add the form here */}
-        <GoalTracker current={5} target={500} />
+        <GoalTracker current={80} target={500} />
         <div className="w-full mt-20">
           <PledgeForm />
         </div>

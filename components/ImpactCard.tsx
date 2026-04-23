@@ -1,6 +1,6 @@
 export default function ImpactCard() {
   const goal = 500;
-  const current = 142; // We can make this "live" later
+  const current = 80; // We can make this "live" later
   const percentage = (current / goal) * 100;
 
   return (
@@ -27,7 +27,7 @@ export default function ImpactCard() {
         </p>
         
         <button className="w-full bg-brand-orange hover:bg-orange-600 text-white font-bold py-3 rounded-xl transition-colors">
-          Donate Gear Now
+          <a href="#donate">Donate Gear Now</a>
         </button>
       </div>
     </div>
