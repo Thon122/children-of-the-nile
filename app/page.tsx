@@ -3,6 +3,8 @@ import ImpactCard from '@/components/ImpactCard';
 import AboutFounder from '@/components/AboutFounder';
 import PledgeForm from '@/components/PledgeForm'; // 1. Import
 import GoalTracker from '@/components/GoalTracker';
+import FAQ from '@/components/FAQ';
+import Gallery from '@/components/Gallery';
 
 export default function Home() {
   return (
@@ -19,14 +21,15 @@ export default function Home() {
         <div className="w-full mt-20">
           <AboutFounder />
         </div>
-
+        <FAQ />
+        <Gallery/>
         {/* 2. Add the form here */}
         <GoalTracker current={80} target={500} />
         <div className="w-full mt-20">
           <PledgeForm />
         </div>
-
-        <p className="mt-16 text-gray-600 text-xs uppercase tracking-widest text-center">
+        
+        <p className="tracking-[0.3em] uppercase text-zinc-600 text-[10px] font-bold">
           Building a bridge to South Sudan
         </p>
       </main>
