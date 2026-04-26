@@ -5,6 +5,7 @@ import PledgeForm from '@/components/PledgeForm'; // 1. Import
 import GoalTracker from '@/components/GoalTracker';
 import FAQ from '@/components/FAQ';
 import Gallery from '@/components/Gallery';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
@@ -28,10 +29,7 @@ export default function Home() {
         <div className="w-full mt-20">
           <PledgeForm />
         </div>
-        
-        <p className="tracking-[0.3em] uppercase text-zinc-600 text-[10px] font-bold">
-          Building a bridge to South Sudan
-        </p>
+        <Footer />
       </main>
     </div>
   );
