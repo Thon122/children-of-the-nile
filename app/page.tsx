@@ -1,3 +1,4 @@
+'use client';
 import Navbar from '@/components/Navbar';
 import ImpactCard from '@/components/ImpactCard';
 import AboutFounder from '@/components/AboutFounder';
@@ -6,6 +7,7 @@ import GoalTracker from '@/components/GoalTracker';
 import FAQ from '@/components/FAQ';
 import Gallery from '@/components/Gallery';
 import Footer from '@/components/Footer';
+import { handlePledge } from './actions/pledge'
 
 export default function Home() {
   return (
@@ -30,6 +32,7 @@ export default function Home() {
           <PledgeForm />
         </div>
         <Footer />
+
       </main>
     </div>
   );

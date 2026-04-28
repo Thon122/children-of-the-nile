@@ -2,32 +2,39 @@
 
 import { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import { handlePledge } from '../app/actions/pledge'; // Import your DB action
 
 export default function PledgeForm() {
   const form = useRef<HTMLFormElement>(null);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  // We make this 'async' so we can 'await' the database save
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!form.current) return;
     setLoading(true);
 
-    // Replace the strings below with your actual IDs from EmailJS
-    emailjs.sendForm(
-      'service_3jc8u51', 
-      'template_6tj8kmm', 
-      e.currentTarget, 
-      'Qb96O25mmuXfTB3cp'
-    )
-    .then(() => {
+    try {
+      // 1. ADDED: Save to Database first
+      const formData = new FormData(e.currentTarget);
+      await handlePledge(formData);
+
+      // 2. ORIGINAL LOGIC: Your perfect EmailJS setup
+      await emailjs.sendForm(
+        'service_3jc8u51', 
+        'template_6tj8kmm', 
+        form.current, 
+        'Qb96O25mmuXfTB3cp'
+      );
+
       setSubmitted(true);
       setLoading(false);
-    })
-    .catch((err) => {
-    console.error("EmailJS Error:", err);
-    alert("Check the console for the error!");
-    setLoading(false);
-    });
+    } catch (err) {
+      console.error("Error:", err);
+      alert("Submission failed. Check console.");
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -44,6 +51,7 @@ export default function PledgeForm() {
       <form ref={form} onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Full Name</label>
+          {/* Note: 'name' attribute is used by both DB and EmailJS */}
           <input name="from_name" required type="text" className="w-full bg-black border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-orange-500" placeholder="John Doe" />
         </div>
         <div>
